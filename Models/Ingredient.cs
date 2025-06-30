@@ -1,4 +1,4 @@
-namespace ALInventory.Models;
+﻿namespace Models;
 
 public class Ingredients
 {
