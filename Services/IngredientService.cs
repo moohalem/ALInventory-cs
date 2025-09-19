@@ -14,9 +14,7 @@ namespace Services
             HelperFunctions.DbPathChecker();
             _ingredients = HelperFunctions.LoadIngredients();
         }
-
-        // --- Public Data-Access Methods ---
-
+        
         public IReadOnlyList<Ingredients> GetAllIngredients()
         {
             return HelperFunctions.LoadIngredients();

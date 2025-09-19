@@ -2,10 +2,10 @@
 
 namespace Helpers;
 
-
+using Models;
 public static class HelperFunctions
 {
-    public static string DbPath = "Database/Data.json";
+    private const string DbPath = "Database/Data.json";
 
     /// Checks if the database file and directory exist, creating them if they don't.
     public static void DbPathChecker()
@@ -23,25 +23,25 @@ public static class HelperFunctions
         }
     }
 
-    public static List<Models.Ingredients> LoadIngredients()
+    public static List<Ingredients> LoadIngredients()
     {
         if (!File.Exists(DbPath))
         {
-            return new List<Models.Ingredients>();
+            return new List<Ingredients>();
         }
 
         var json = File.ReadAllText(DbPath);
 
         if (string.IsNullOrWhiteSpace(json))
         {
-            return new List<Models.Ingredients>();
+            return new List<Ingredients>();
         }
 
         // Use null-coalescing to ensure a non-null List is always returned
-        return JsonSerializer.Deserialize<List<Models.Ingredients>>(json) ?? new List<Models.Ingredients>();
+        return JsonSerializer.Deserialize<List<Ingredients>>(json) ?? new List<Ingredients>();
     }
     
-    public static void SaveChanges(List<Models.Ingredients> ingredients)
+    public static void SaveChanges(List<Ingredients> ingredients)
     {
         // Configure serializer to write indented JSON for human readability.
         var options = new JsonSerializerOptions { WriteIndented = true };
